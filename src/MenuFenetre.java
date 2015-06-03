@@ -13,10 +13,13 @@ Historique des modifications
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+
+import javax.swing.ButtonGroup;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButtonMenuItem;
 import javax.swing.KeyStroke;
 
 // TODO: Auto-generated Javadoc
@@ -49,6 +52,7 @@ public class MenuFenetre extends JMenuBar{
 	/** The Constant MENU_AIDE_PROPOS. */
 	private static final String
 			MENU_FICHIER_TITRE = "app.frame.menus.file.title",
+			MENU_ORDRE_TITRE = "app.frame.menus.order.title",
 			MENU_FICHIER_QUITTER = "app.frame.menus.file.exit",
 			MENU_FICHIER_OBTENIRFORME = "app.frame.menus.file.getShape",
 			MENU_DESSIN_TITRE = "app.frame.menus.draw.title",
@@ -77,6 +81,7 @@ public class MenuFenetre extends JMenuBar{
 	public MenuFenetre(CommBase comm) {
 		this.comm = comm;
 		addMenuFichier();
+		addMenuOrdre();
 		addMenuAide();
 	}
 
@@ -111,6 +116,56 @@ public class MenuFenetre extends JMenuBar{
 		add(menu);
 	}
 
+	/** 
+	 * Cr√©er le menu "Ordre". 
+	 */
+	protected void addMenuOrdre() {
+		JMenu menu = creerMenu(MENU_ORDRE_TITRE, new String[] {});
+		
+		JRadioButtonMenuItem sequenceCroissant = new JRadioButtonMenuItem("No. SÈquence Croissant");
+		JRadioButtonMenuItem sequenceDecroissant = new JRadioButtonMenuItem("No. SÈquence DÈcroissant");
+		JRadioButtonMenuItem aireCroissante = new JRadioButtonMenuItem("Aire Croissante");
+		JRadioButtonMenuItem aireDecroissante = new JRadioButtonMenuItem("Aire DÈcroissante");
+		JRadioButtonMenuItem typeForme1 = new JRadioButtonMenuItem("Type Forme 1");
+		JRadioButtonMenuItem typeForme2 = new JRadioButtonMenuItem("Type Forme 2");
+		JRadioButtonMenuItem distanceMax = new JRadioButtonMenuItem("Distance Max");
+		JRadioButtonMenuItem largeurCroissant = new JRadioButtonMenuItem("Largeur Croissante");
+		JRadioButtonMenuItem largeurDecroissante = new JRadioButtonMenuItem("Largeur DÈcroissante");
+		JRadioButtonMenuItem hauteurCroissante = new JRadioButtonMenuItem("Hauteur Croissante");
+		JRadioButtonMenuItem hauteurDecroissante = new JRadioButtonMenuItem("Hauteur DÈcroissante");
+		JRadioButtonMenuItem ordreOriginal = new JRadioButtonMenuItem("Ordre Original");
+		
+		ButtonGroup group = new ButtonGroup();
+		group.add(sequenceCroissant);
+		group.add(sequenceDecroissant);
+		group.add(aireCroissante);
+		group.add(aireDecroissante);
+		group.add(typeForme1);
+		group.add(typeForme2);
+		group.add(distanceMax);
+		group.add(largeurCroissant);
+		group.add(largeurDecroissante);
+		group.add(hauteurCroissante);
+		group.add(hauteurDecroissante);
+		group.add(ordreOriginal);
+		
+		menu.add(sequenceCroissant);
+		menu.add(sequenceDecroissant);
+		menu.add(aireCroissante);
+		menu.add(aireDecroissante);
+		menu.add(typeForme1);
+		menu.add(typeForme2);
+		menu.add(distanceMax);
+		menu.add(largeurCroissant);
+		menu.add(largeurDecroissante);
+		menu.add(hauteurCroissante);
+		menu.add(hauteurDecroissante);
+		menu.add(ordreOriginal);
+		
+		
+		add(menu);
+	}
+	
 	/**
 	 *  Activer ou d√©sactiver les items du menu selon la s√©lection. 
 	 */
