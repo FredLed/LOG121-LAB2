@@ -19,7 +19,7 @@ public class ClListe<T> {
 		tete = null;
 		fin = null;
 		positionCourante = null;
-		this.max = max;
+		this.maxNbElements = max;
 	}
 	
 	public boolean estVide() {
