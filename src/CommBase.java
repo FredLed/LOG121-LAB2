@@ -186,6 +186,7 @@ public class CommBase {
 					if (listener != null)
 						firePropertyChange("ENVOIE-TEST", null, (Object) ".");
 				}
+				 Thread.sleep(DELAI);
 				 stop();
 				 return null;
 			}

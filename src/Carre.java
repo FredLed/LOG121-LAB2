@@ -1,6 +1,8 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Point;
+
 
 
 // TODO: Auto-generated Javadoc
@@ -29,5 +31,6 @@ public class Carre extends Rectangle{
 		
 		g.setColor(getCouleur());
 		g.fillRect(sommet1.x, sommet1.y, (sommet2.x - sommet1.x), (sommet2.y - sommet1.y));
+		
 	}
 }
