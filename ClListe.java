@@ -1,5 +1,4 @@
 public class ClListe<T> {
-	
 	private class Noeud {
 		
 		// On a décidé de faire une liste doublement chaînée pour facilité
@@ -15,89 +14,100 @@ public class ClListe<T> {
 		private T valeur;
 	}
 	
-	public ClListe() {
+	public ClListe(int max) {
 		nbElements = 0;
 		tete = null;
 		fin = null;
 		positionCourante = null;
+		this.max = max;
 	}
 	
 	public boolean estVide() {
 		return nbElements == 0;
 	}
 	
-	public void InsererAvant(T valeur) {
-		// Dans tous les cas, on met tout le temps la position courante à la 
-		// nouvelle donnée entrée.
-		if (estVide()) {
-			// Si la liste est vide, on met la tete, la position courante et la fin
-			// à la donnée qu'on ajoute car c'est la seule de la liste pour le moment.
-			fin = positionCourante = tete = new Noeud(valeur, null, null);
-		}
-		else if (tete == fin) {
-			// Si la tete et la fin sont équivalente, cela veut dire qu'il y a
-			// pour le moment une seule donnée et qu'on veut en ajouter une deuxième.
-			// Donc on laisse la fin à sa position et on recule la tête et la position courante.
-			tete = positionCourante = fin.precedent = new Noeud(valeur, null, fin);
-		}
-		else if (positionCourante == tete) {
-			// Si la position courante est à la tête (si on se rend ici, cela veut
-			// dire qu'on a minimum 3 données dans la liste grâce au deux tests
-			// ci-haut), on ajoute avant la tête et on déplace la tête à la 
-			// nouvelle donnée.
-			positionCourante.precedent = new Noeud(valeur, null, positionCourante);
-			tete= positionCourante.precedent;
+	public boolean InsererAvant(T valeur) {
+		if (nbElements < maxNbElements) {
+			// Dans tous les cas, on met tout le temps la position courante à la 
+			// nouvelle donnée entrée.
+			if (estVide()) {
+				// Si la liste est vide, on met la tete, la position courante et la fin
+				// à la donnée qu'on ajoute car c'est la seule de la liste pour le moment.
+				fin = positionCourante = tete = new Noeud(valeur, null, null);
+			}
+			else if (tete == fin) {
+				// Si la tete et la fin sont équivalente, cela veut dire qu'il y a
+				// pour le moment une seule donnée et qu'on veut en ajouter une deuxième.
+				// Donc on laisse la fin à sa position et on recule la tête et la position courante.
+				tete = positionCourante = fin.precedent = new Noeud(valeur, null, fin);
+			}
+			else if (positionCourante == tete) {
+				// Si la position courante est à la tête (si on se rend ici, cela veut
+				// dire qu'on a minimum 3 données dans la liste grâce au deux tests
+				// ci-haut), on ajoute avant la tête et on déplace la tête à la 
+				// nouvelle donnée.
+				positionCourante.precedent = new Noeud(valeur, null, positionCourante);
+				tete= positionCourante.precedent;
+				
+				// On place la posistion courant à la nouvelle donnée.
+				positionCourante = tete;
+			}
+			else if (positionCourante != null) {
+				// Si on se rend ici, on fait juste ajouté la nouvelle donnée avant
+				// la position courante.
+				Noeud nouvelleEntree= new Noeud(valeur, positionCourante.precedent, positionCourante);
+				positionCourante.precedent.suivant = nouvelleEntree;
+				positionCourante.precedent = nouvelleEntree;
+				
+				// On place la position courante à la nouvelle donnée.
+				positionCourante = nouvelleEntree;
+			}
 			
-			// On place la posistion courant à la nouvelle donnée.
-			positionCourante = tete;
+			++nbElements;
+			return true;
 		}
-		else if (positionCourante != null) {
-			// Si on se rend ici, on fait juste ajouté la nouvelle donnée avant
-			// la position courante.
-			Noeud nouvelleEntree= new Noeud(valeur, positionCourante.precedent, positionCourante);
-			positionCourante.precedent.suivant = nouvelleEntree;
-			positionCourante.precedent = nouvelleEntree;
-			
-			// On place la position courante à la nouvelle donnée.
-			positionCourante = nouvelleEntree;
-		}
-		
-		++nbElements;
+		else
+			return false;
 	}
 	
-	public void InsererApres(T valeur) {
-		// Dans tous les cas, on met tout le temps la position courante à la 
-		// nouvelle donnée entrée. 
-		if (estVide()) {
-			// Si la liste est vide, on met la tete, la position courante et la fin
-			// à la donnée qu'on ajoute car c'est la seule de la liste pour le moment.
-			fin = positionCourante = tete = new Noeud(valeur, null, null);
-		}
-		else if (tete == fin) {
-			// Si la tete et la fin sont équivalente, cela veut dire qu'il y a
-			// pour le moment une seule donnée et qu'on veut en ajouter une deuxième.
-			// Donc on laisse la tête à sa position et on avance la fin et la position courante.
-			positionCourante = tete.suivant = fin = new Noeud(valeur, tete, null);
-		}
-		else if (positionCourante == fin) {
-			// Si on veut ajouter après la fin de la liste, on déplace la fin.
-			fin = positionCourante.suivant = new Noeud(valeur, positionCourante, null);
+	public boolean InsererApres(T valeur) {
+		if (nbElements < maxNbElements) {
+			// Dans tous les cas, on met tout le temps la position courante à la 
+			// nouvelle donnée entrée. 
+			if (estVide()) {
+				// Si la liste est vide, on met la tete, la position courante et la fin
+				// à la donnée qu'on ajoute car c'est la seule de la liste pour le moment.
+				fin = positionCourante = tete = new Noeud(valeur, null, null);
+			}
+			else if (tete == fin) {
+				// Si la tete et la fin sont équivalente, cela veut dire qu'il y a
+				// pour le moment une seule donnée et qu'on veut en ajouter une deuxième.
+				// Donc on laisse la tête à sa position et on avance la fin et la position courante.
+				positionCourante = tete.suivant = fin = new Noeud(valeur, tete, null);
+			}
+			else if (positionCourante == fin) {
+				// Si on veut ajouter après la fin de la liste, on déplace la fin.
+				fin = positionCourante.suivant = new Noeud(valeur, positionCourante, null);
+				
+				// On place la position courante à la nouvelle donnée.
+				positionCourante = fin;
+			}
+			else if (positionCourante != null) {
+				// Si on se rend ici, on fait juste ajouté la nouvelle donnée après
+				// la position courante.
+				Noeud nouvelleEntree = new Noeud(valeur, positionCourante, positionCourante.suivant);
+				positionCourante.suivant.precedent = nouvelleEntree;
+				positionCourante.suivant = nouvelleEntree;
+				
+				// On place la position courante à la nouvelle donnée.
+				positionCourante = nouvelleEntree;
+			}
 			
-			// On place la position courante à la nouvelle donnée.
-			positionCourante = fin;
+			++nbElements;
+			return true;
 		}
-		else if (positionCourante != null) {
-			// Si on se rend ici, on fait juste ajouté la nouvelle donnée après
-			// la position courante.
-			Noeud nouvelleEntree = new Noeud(valeur, positionCourante, positionCourante.suivant);
-			positionCourante.suivant.precedent = nouvelleEntree;
-			positionCourante.suivant = nouvelleEntree;
-			
-			// On place la position courante à la nouvelle donnée.
-			positionCourante = nouvelleEntree;
-		}
-		
-		++nbElements;
+		else
+			return false;
 	}
 	
 	/**
@@ -177,8 +187,14 @@ public class ClListe<T> {
 			throw new Exception("La liste est vide.");
 	}
 	
+	public int getMax() {
+		return this.maxNbElements;
+	}
+	
 	private Noeud tete;
 	private Noeud positionCourante;
 	private Noeud fin;
 	private int nbElements;
+	private int maxNbElements;
+	
 }
