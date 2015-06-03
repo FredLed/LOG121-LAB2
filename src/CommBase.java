@@ -157,8 +157,7 @@ public class CommBase {
 				String chaineForme;
 				AbstractForme formeRecue;
 				
-				while (true) {
-					Thread.sleep(DELAI);
+				while (!listeForme.estPleine()) {
 					
 					chaineForme = null;
 					
@@ -187,7 +186,8 @@ public class CommBase {
 					if (listener != null)
 						firePropertyChange("ENVOIE-TEST", null, (Object) ".");
 				}
-				// return null;
+				 stop();
+				 return null;
 			}
 		};
 		if (listener != null)

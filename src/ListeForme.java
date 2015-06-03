@@ -86,7 +86,7 @@ public class ListeForme extends Observable{
 	 *
 	 * @return true, if successful
 	 */
-	public boolean listeFormeEstPleine(){
+	public boolean estPleine(){
 		
 		return this.getIndex() == NOMBRE_FORME_MAX;
 	}
@@ -100,7 +100,7 @@ public class ListeForme extends Observable{
 	 */
 	public void ajouterForme(AbstractForme forme){
 		
-		if(listeFormeEstPleine()){
+		if(this.estPleine()){
 			
 			this.setIndex(0);
 		}
@@ -125,7 +125,5 @@ public class ListeForme extends Observable{
 		
 		this.setIndex(0);
 		this.setNombreForme(0);
-		setChanged();
-		notifyObservers();
 	}
 }
