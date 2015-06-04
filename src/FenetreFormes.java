@@ -38,16 +38,14 @@ public class FenetreFormes extends JComponent implements Observer{
 	/** The Constant dimension. */
 	public static final Dimension dimension = new Dimension(500,500);
 	
-	/** The liste forme. */
-	private ListeForme listeForme = null;
-	
-	
+	/**La liste contenant les formes reçu du serveur */
+	private ClListe listeForme = null;
 	/**
 	 * Constructeur.
 	 *
 	 * @param listeForme the liste forme
 	 */
-	public FenetreFormes(ListeForme listeForme){
+	public FenetreFormes(ClListe listeForme){
 		
 		this.listeForme = listeForme;
 		listeForme.addObserver(this);
@@ -70,11 +68,29 @@ public class FenetreFormes extends JComponent implements Observer{
 	 */
 	@Override 
 	public void paintComponent(Graphics g){
-		if (listeForme.getNombreForme() == 10){
+		
+		if (listeForme.getNbElements() == 10){
+			
+			try{
+				
+				listeForme.setPositionCouranteDebut();
+			}
+			catch(Exception e){
+				
+				e.printStackTrace();
+			}
 			
 			for(int i = 0; i < 10; i++){
 			
-				listeForme.getForme(i).draw(g,i);
+				((AbstractForme)(listeForme.getElement())).draw(g,i);
+				
+				try{
+					
+					listeForme.avancer();
+				}
+				catch(Exception e){
+					
+				}
 			}
 		}
 	}

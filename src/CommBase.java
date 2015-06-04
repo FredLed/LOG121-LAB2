@@ -46,7 +46,7 @@ public class CommBase {
 	private CreateurForme createurForme = null;
 	
 	/** La liste contenant les formes reçue du serveur de forme */
-	private ListeForme listeForme  = null;
+	private ClListe listeForme = null;
 	
 	/**
 	 * Constructeur.
@@ -54,7 +54,7 @@ public class CommBase {
 	public CommBase(){
 		
 		this.serveurForme = new ServeurForme();
-		this.listeForme = new ListeForme();
+		this.listeForme = new ClListe(10);
 		this.createurForme = new CreateurForme();
 	}
 	
@@ -63,7 +63,7 @@ public class CommBase {
 	 *
 	 * @return the liste forme
 	 */
-	public ListeForme getListeForme(){
+	public ClListe getListeForme(){
 		
 		return this.listeForme;
 	}
@@ -132,7 +132,6 @@ public class CommBase {
 			if (connexionServeur != null) {
 
 				connexionServeur.close();
-				this.listeForme.viderListe();
 			}
 
 			threadComm.cancel(true);
@@ -156,6 +155,7 @@ public class CommBase {
 				System.out.println("Le fils d'execution parallele est lance");
 				String chaineForme;
 				AbstractForme formeRecue;
+				listeForme.reinitialiser();
 				
 				while (!listeForme.estPleine()) {
 					
@@ -170,7 +170,7 @@ public class CommBase {
 							
 							if(formeRecue != null){
 								
-								listeForme.ajouterForme(formeRecue);
+								listeForme.InsererApres(formeRecue);
 							}
 						}
 						
