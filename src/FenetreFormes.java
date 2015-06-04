@@ -82,11 +82,9 @@ public class FenetreFormes extends JComponent implements Observer{
 			
 			for(int i = 0; i < 10; i++){
 			
-				((AbstractForme)(listeForme.getElement())).draw(g,i);
-				
 				try{
-					
-					listeForme.avancer();
+					if(i != 0){listeForme.avancer();}
+					((AbstractForme)(listeForme.getElement())).draw(g,i);
 				}
 				catch(Exception e){
 					
