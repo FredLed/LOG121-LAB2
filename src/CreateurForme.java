@@ -28,16 +28,16 @@ public class CreateurForme {
 			
 			switch(typeForme){
 			
-			case "CARRE":	forme = new Carre(numeroSequence, Color.BLUE, UtilitaireRegex.getSommets(chaineForme));
+			case "CARRE":	forme = new Carre(numeroSequence, new Color(1,0,0, 0.4f), UtilitaireRegex.getSommets(chaineForme));
 			break;
 			
-			case "RECTANGLE":	forme = new Rectangle(numeroSequence, Color.DARK_GRAY, UtilitaireRegex.getSommets(chaineForme));
+			case "RECTANGLE":	forme = new Rectangle(numeroSequence, new Color(0,1,0, 0.4f), UtilitaireRegex.getSommets(chaineForme));
 			break;
 			
-			case "CERCLE":	forme = new Cercle(numeroSequence, Color.CYAN, UtilitaireRegex.getCentres(chaineForme), UtilitaireRegex.getRayon(chaineForme));
+			case "CERCLE":	forme = new Cercle(numeroSequence, new Color(0,0,1, 0.4f), UtilitaireRegex.getCentres(chaineForme), UtilitaireRegex.getRayon(chaineForme));
 			break;
 			
-			case "OVALE":	forme = new Ovale(numeroSequence, Color.GREEN, UtilitaireRegex.getCentres(chaineForme), UtilitaireRegex.getRayon(chaineForme));
+			case "OVALE":	forme = new Ovale(numeroSequence, new Color(0,0,0, 0.4f), UtilitaireRegex.getCentres(chaineForme), UtilitaireRegex.getRayon(chaineForme));
 			break;
 			
 			case "LIGNE": forme = new Ligne(numeroSequence, Color.BLACK, UtilitaireRegex.getSommets(chaineForme));
