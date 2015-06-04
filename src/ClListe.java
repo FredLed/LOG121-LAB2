@@ -1,6 +1,4 @@
-import java.util.Observable;
-
-public class ClListe<T> extends Observable{
+public class ClListe<T> {
 	private class Noeud {
 		
 		// On a décidé de faire une liste doublement chaînée pour facilité
@@ -66,8 +64,6 @@ public class ClListe<T> extends Observable{
 			}
 			
 			++nbElements;
-			setChanged();
-			notifyObservers();
 			return true;
 		}
 		else
@@ -108,8 +104,6 @@ public class ClListe<T> extends Observable{
 			}
 			
 			++nbElements;
-			setChanged();
-			notifyObservers();
 			return true;
 		}
 		else
@@ -145,8 +139,6 @@ public class ClListe<T> extends Observable{
 			}
 			
 			--nbElements;
-			setChanged();
-			notifyObservers();
 			return true;
 		}
 	}
@@ -197,6 +189,18 @@ public class ClListe<T> extends Observable{
 	
 	public int getMax() {
 		return this.maxNbElements;
+	}
+	
+	public boolean estPleine() {
+		return this.maxNbElements == this.getNbElements();
+	}
+	
+	public boolean reinitialiserListe() {
+		nbElements = 0;
+		tete = null;
+		fin = null;
+		positionCourante = null;
+		this.maxNbElements = max;
 	}
 	
 	private Noeud tete;
