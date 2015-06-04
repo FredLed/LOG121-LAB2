@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Point;
 
 
@@ -37,7 +38,13 @@ public class Ovale extends AbstractForme{
 	public void draw(Graphics g, int position){
 		
 		g.setColor(getCouleur());
+		final Graphics2D g2 = (Graphics2D) g.create();
+		
 		g.fillOval((position * 40),(position * 40), rayonH, rayonV);
 		
+		g2.setStroke(dashed);
+		g2.drawRect((position * 40), (position * 40), rayonH, rayonV);
+		
+		g2.dispose();
 	}
 }
