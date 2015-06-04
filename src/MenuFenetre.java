@@ -49,6 +49,53 @@ public class MenuFenetre extends JMenuBar{
 	/** The Constant MENU_FICHIER_QUITTER_TOUCHE_RACC. */
 	private static final char MENU_FICHIER_OBTENIRFORME_TOUCHE_RACC = KeyEvent.VK_Q;
 	
+	private static enum MethodesDeTrie{
+		
+		sequenceCroissant,sequenceDecroissant,
+		aireCroissante,aireDecroissante,
+		typeForme1,typeForme2,distanceMax,
+		largeurCroissant,largeurDecroissante,
+		hauteurCroissante,hauteurDecroissante,
+		ordreOriginal;
+		
+		public String getDescription(){
+			
+			String methodeTrie = name();
+			String description = null;
+			
+			switch (methodeTrie){
+			
+			case "sequenceCroissant": description = "No. Séquence Croissant";
+					break;
+			case "sequenceDecroissant": description = "No. Séquence Décroissant";
+					break;
+			case "aireCroissante": description = "Aire Croissante";
+					break;
+			case "aireDecroissante": description = "Aire Décroissante";
+					break;
+			case "typeForme1": description = "Carré-Rectangle-Cercle-Ovale-Ligne";
+					break;
+			case "typeForme2": description = "Ligne-Ovale-Cercle-Rectangle-Carré";
+					break;
+			case "distanceMax": description = "Distance Max";
+					break;
+			case "largeurCroissant": description = "Largeur Croissante";
+					break;
+			case "largeurDecroissante": description = "Largeur Décroissante";
+					break;
+			case "hauteurCroissante": description = "Hauteur Croissante";
+					break;
+			case "hauteurDecroissante": description = "Hauteur Décroissante";
+					break;
+			case "ordreOriginal": description = "Ordre Original";
+					break;
+			}
+			
+			return description;
+		}
+	}
+	
+	
 	/** The Constant MENU_AIDE_PROPOS. */
 	private static final String
 			MENU_FICHIER_TITRE = "app.frame.menus.file.title",
@@ -121,47 +168,49 @@ public class MenuFenetre extends JMenuBar{
 	 */
 	protected void addMenuOrdre() {
 		JMenu menu = creerMenu(MENU_ORDRE_TITRE, new String[] {});
-		
-		JRadioButtonMenuItem sequenceCroissant = new JRadioButtonMenuItem("No. Séquence Croissant");
-		JRadioButtonMenuItem sequenceDecroissant = new JRadioButtonMenuItem("No. Séquence Décroissant");
-		JRadioButtonMenuItem aireCroissante = new JRadioButtonMenuItem("Aire Croissante");
-		JRadioButtonMenuItem aireDecroissante = new JRadioButtonMenuItem("Aire Décroissante");
-		JRadioButtonMenuItem typeForme1 = new JRadioButtonMenuItem("Type Forme 1");
-		JRadioButtonMenuItem typeForme2 = new JRadioButtonMenuItem("Type Forme 2");
-		JRadioButtonMenuItem distanceMax = new JRadioButtonMenuItem("Distance Max");
-		JRadioButtonMenuItem largeurCroissant = new JRadioButtonMenuItem("Largeur Croissante");
-		JRadioButtonMenuItem largeurDecroissante = new JRadioButtonMenuItem("Largeur Décroissante");
-		JRadioButtonMenuItem hauteurCroissante = new JRadioButtonMenuItem("Hauteur Croissante");
-		JRadioButtonMenuItem hauteurDecroissante = new JRadioButtonMenuItem("Hauteur Décroissante");
-		JRadioButtonMenuItem ordreOriginal = new JRadioButtonMenuItem("Ordre Original");
-		
 		ButtonGroup group = new ButtonGroup();
-		group.add(sequenceCroissant);
-		group.add(sequenceDecroissant);
-		group.add(aireCroissante);
-		group.add(aireDecroissante);
-		group.add(typeForme1);
-		group.add(typeForme2);
-		group.add(distanceMax);
-		group.add(largeurCroissant);
-		group.add(largeurDecroissante);
-		group.add(hauteurCroissante);
-		group.add(hauteurDecroissante);
-		group.add(ordreOriginal);
 		
-		menu.add(sequenceCroissant);
-		menu.add(sequenceDecroissant);
-		menu.add(aireCroissante);
-		menu.add(aireDecroissante);
-		menu.add(typeForme1);
-		menu.add(typeForme2);
-		menu.add(distanceMax);
-		menu.add(largeurCroissant);
-		menu.add(largeurDecroissante);
-		menu.add(hauteurCroissante);
-		menu.add(hauteurDecroissante);
-		menu.add(ordreOriginal);
-		
+		for(final MethodesDeTrie methode : MethodesDeTrie.values()){
+			
+			JRadioButtonMenuItem item = new JRadioButtonMenuItem(methode.getDescription());
+			item.addActionListener(new ActionListener(){
+		        @Override
+		        public void actionPerformed(ActionEvent evt) {
+		            
+		        	switch (methode.toString()){
+					
+					case "sequenceCroissant": ;
+							break;
+					case "sequenceDecroissant": ;
+							break;
+					case "aireCroissante": ;
+							break;
+					case "aireDecroissante": ;
+							break;
+					case "typeForme1": ;
+							break;
+					case "typeForme2": ;
+							break;
+					case "distanceMax": ;
+							break;
+					case "largeurCroissant": ;
+							break;
+					case "largeurDecroissante": ;
+							break;
+					case "hauteurCroissante":;
+							break;
+					case "hauteurDecroissante": ;
+							break;
+					case "ordreOriginal": ;
+							break;
+					}
+		        	
+		        }
+			});
+			group.add(item);
+			menu.add(item);
+			
+		}
 		
 		add(menu);
 	}
@@ -188,4 +237,5 @@ public class MenuFenetre extends JMenuBar{
         }
         return menu;
    }
+	
 }
