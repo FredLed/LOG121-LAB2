@@ -71,9 +71,9 @@ public class Rectangle extends AbstractForme{
 	/* (non-Javadoc)
 	 * @see AbstractForme#draw(java.awt.Graphics)
 	 */
-	public void draw(Graphics g){
+	public void draw(Graphics g, int position){
 		
 		g.setColor(getCouleur());
-		g.fillRect(sommet1.x, sommet1.y, (sommet2.x - sommet1.x), (sommet2.y - sommet1.y));
+		g.fillRect((position * 40), (position * 40), (sommet2.x - sommet1.x), (sommet2.y - sommet1.y));
 	}
 }

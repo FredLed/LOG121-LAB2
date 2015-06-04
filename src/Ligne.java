@@ -70,9 +70,10 @@ public class Ligne extends AbstractForme{
 	/* (non-Javadoc)
 	 * @see Rectangle#draw(java.awt.Graphics)
 	 */
-	public void draw(Graphics g){
+	public void draw(Graphics g, int position){
 		
 		g.setColor(getCouleur());
-		g.drawLine(sommet1.x, sommet1.y, sommet2.x, sommet2.y);
+		g.drawLine((position * 40), (position * 40),
+				(position * 40) + sommet2.x, (position * 40) + sommet2.y);
 	}
 }

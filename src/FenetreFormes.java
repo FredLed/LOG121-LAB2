@@ -70,10 +70,12 @@ public class FenetreFormes extends JComponent implements Observer{
 	 */
 	@Override 
 	public void paintComponent(Graphics g){
-		
-		for(int i = 0; i < listeForme.getNombreForme(); i++){
+		if (listeForme.getNombreForme() == 10){
 			
-			listeForme.getForme(i).draw(g);
+			for(int i = 0; i < 10; i++){
+			
+				listeForme.getForme(i).draw(g,i);
+			}
 		}
 	}
 	

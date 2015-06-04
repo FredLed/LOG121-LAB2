@@ -34,10 +34,10 @@ public class Ovale extends AbstractForme{
 	/* (non-Javadoc)
 	 * @see AbstractForme#draw(java.awt.Graphics)
 	 */
-	public void draw(Graphics g){
+	public void draw(Graphics g, int position){
 		
 		g.setColor(getCouleur());
-		g.fillOval(centre.x, centre.y, rayonH, rayonV);
+		g.fillOval((position * 40),(position * 40), rayonH, rayonV);
 		
 	}
 }

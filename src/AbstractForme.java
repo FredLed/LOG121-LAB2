@@ -72,5 +72,5 @@ public abstract class AbstractForme {
 	 *
 	 * @param g the g
 	 */
-	abstract void draw(Graphics g);
+	abstract void draw(Graphics g, int position);
 }
