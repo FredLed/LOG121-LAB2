@@ -70,6 +70,39 @@ public class Rectangle extends AbstractForme{
 		this.sommet2 = new Point(x2,y2);
 	}
 	
+	/**
+	 * Retourne la largeur de la ligne
+	 *
+	 * @return La largeur de la ligne
+	 * 
+	 */
+	public int getLargeur(){
+		
+		return Math.abs(this.getSommet2().x - this.getSommet1().x);
+	}
+	
+	/**
+	 * Retourne la hauteur de la ligne
+	 *
+	 * @return La hauteur de la ligne
+	 * 
+	 */
+	public int getHauteur(){
+		
+		return Math.abs(this.getSommet2().y - this.getSommet1().y);
+	}
+	
+	/**
+	 * Retourne l'aire de la ligne
+	 *
+	 * @return L'aire
+	 * 
+	 */
+	public double getAire(){
+		
+		return Math.abs(this.getSommet2().y - this.getSommet1().y);
+	}
+	
 	/* (non-Javadoc)
 	 * @see AbstractForme#draw(java.awt.Graphics)
 	 */

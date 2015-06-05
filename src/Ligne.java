@@ -69,8 +69,46 @@ public class Ligne extends AbstractForme{
 		this.sommet2 = new Point(x2,y2);
 	}
 	
-	/* (non-Javadoc)
-	 * @see Rectangle#draw(java.awt.Graphics)
+	/**
+	 * Retourne la largeur de la ligne
+	 *
+	 * @return La largeur de la ligne
+	 * 
+	 */
+	public int getLargeur(){
+		
+		return Math.abs(this.getSommet2().x - this.getSommet1().x);
+	}
+	
+	/**
+	 * Retourne la hauteur de la ligne
+	 *
+	 * @return La hauteur de la ligne
+	 * 
+	 */
+	public int getHauteur(){
+		
+		return Math.abs(this.getSommet2().y - this.getSommet1().y);
+	}
+	
+	/**
+	 * Retourne l'aire de la ligne
+	 *
+	 * @return L'aire
+	 * 
+	 */
+	public double getAire(){
+		
+		return Math.abs(this.getSommet2().y - this.getSommet1().y);
+	}
+	
+	
+	
+	/**
+	 * Dessine la ligne et le rectangle de son aire occupee
+	 *
+	 * @param g L'objet graphique
+	 * @param position La position dans la liste
 	 */
 	public void draw(Graphics g, int position){
 		

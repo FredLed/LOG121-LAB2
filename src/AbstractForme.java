@@ -79,4 +79,32 @@ public abstract class AbstractForme {
 	 * @param g the g
 	 */
 	abstract void draw(Graphics g, int position);
+	
+	/**
+	 * Classe abstraite permettant le dessin de la forme
+	 *
+	 * @return La largeur de la forme
+	 */
+	abstract int getLargeur();
+	
+	/**
+	 * Classe abstraite permettant le dessin de la forme
+	 *
+	 * @return La hauteur de la forme
+	 */
+	abstract int getHauteur();
+	
+	/**
+	 * Classe abstraite permettant le dessin de la forme
+	 *
+	 * @return L'aire de la forme
+	 */
+	abstract double getAire();
+	
+	/**
+	 * Classe abstraite permettant le dessin de la forme
+	 *
+	 * @return La distance maximale entre 2 points de la forme
+	 */
+	//abstract int getDistanceMax();
 }

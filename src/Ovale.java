@@ -32,6 +32,39 @@ public class Ovale extends AbstractForme{
 		this.rayonV = rayon[1];
 	}
 	
+	/**
+	 * Retourne la largeur de la ligne
+	 *
+	 * @return La largeur de la ligne
+	 * 
+	 */
+	public int getLargeur(){
+		
+		return this.rayonH;
+	}
+	
+	/**
+	 * Retourne la hauteur de la ligne
+	 *
+	 * @return La hauteur de la ligne
+	 * 
+	 */
+	public int getHauteur(){
+		
+		return this.rayonV;
+	}
+	
+	/**
+	 * Retourne l'aire de la ligne
+	 *
+	 * @return L'aire
+	 * 
+	 */
+	public double getAire(){
+		
+		return (Math.PI * rayonH * rayonV);
+	}
+	
 	/* (non-Javadoc)
 	 * @see AbstractForme#draw(java.awt.Graphics)
 	 */

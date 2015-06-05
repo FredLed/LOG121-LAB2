@@ -25,6 +25,28 @@ public class Cercle extends Ovale{
 		
 	}
 	
+	/**
+	 * Retourne la hauteur de la ligne
+	 *
+	 * @return La hauteur de la ligne
+	 * 
+	 */
+	public int getHauteur(){
+		
+		return this.rayonH;
+	}
+	
+	/**
+	 * Retourne l'aire de la ligne
+	 *
+	 * @return L'aire
+	 * 
+	 */
+	public double getAire(){
+		
+		return (Math.PI * rayonH * rayonH);
+	}
+	
 	/* (non-Javadoc)
 	 * @see AbstractForme#draw(java.awt.Graphics)
 	 */
