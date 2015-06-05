@@ -37,8 +37,10 @@ public class Ovale extends AbstractForme{
 	 */
 	public void draw(Graphics g, int position){
 		
-		g.setColor(getCouleur());
 		final Graphics2D g2 = (Graphics2D) g.create();
+		g2.setColor(Color.BLACK);
+		
+		g.setColor(getCouleur());
 		
 		g.fillOval((position * 40),(position * 40), rayonH, rayonV);
 		

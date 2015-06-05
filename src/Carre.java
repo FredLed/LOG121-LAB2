@@ -30,8 +30,10 @@ public class Carre extends Rectangle{
 	 */
 	public void draw(Graphics g, int position){
 		
-		g.setColor(getCouleur());
 		final Graphics2D g2 = (Graphics2D) g.create();
+		g2.setColor(Color.BLACK);
+		
+		g.setColor(getCouleur());
 		
 		g.fillRect((position * 40),(position * 40),
 				(sommet2.x - sommet1.x), (sommet2.y - sommet1.y));

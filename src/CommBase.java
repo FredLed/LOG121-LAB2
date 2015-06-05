@@ -152,7 +152,7 @@ public class CommBase {
 		threadComm = new SwingWorker() {
 			@Override
 			protected Object doInBackground() throws Exception {
-				System.out.println("Le fils d'execution parallele est lance");
+				System.out.println("Réception des formes");
 				String chaineForme;
 				AbstractForme formeRecue;
 				listeForme.reinitialiser();
