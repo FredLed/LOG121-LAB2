@@ -15,5 +15,33 @@ public class TrieForme {
 		
 		return nouvelleListe;
 	}
+	
+	private ClListe<AbstractForme> triNumérique(ClListe<AbstractForme> listeOriginale,
+													boolean croissant) {
+		ClListe<AbstractFe>orm nouvelleListe;
+		
+		if (croissant) {
+			
+		}
+		else {
+			
+		}
+		
+		return nouvelleListe;
+	}
+	
+	// Méthode de tri par insertion du site : http://openclassrooms.com/courses/le-tri-par-insertion
+	
+	void triInsertion(ClListe<AbstractForme> listeOriginale, int taille)
+	{
+	   int i, j;
+	   for (i = 1; i < listeOriginale.getNbElements(); ++i) {
+		   
+	       int elem = tab[i];
+	       for (j = i; j > 0 && tab[j-1] > elem; j--)
+	           tab[j] = tab[j-1];
+	       tab[j] = elem;
+	   }
+	}
 
 }
