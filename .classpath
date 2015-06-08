@@ -2,6 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/Benoit/Desktop/ETS/Été 2015/LOG-121/Projets_Eclipse/TP1_Benoit_Anctil_Robitaille/ca.etsmtl.log.util.jar"/>
+	<classpathentry kind="lib" path="ca.etsmtl.log.util.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
