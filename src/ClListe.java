@@ -210,6 +210,36 @@ public class ClListe<T> extends Observable{
 		positionCourante = null;
 	}
 	
+	public boolean trier(TypeTrie methode) {
+		
+			switch (methode){
+				case NUM_SEQ_CROISSANT : ;
+						break;
+				case NUM_SEQ_DECROISSANT: ;
+						break;
+				case AIRE_FORME_CROISSANT: ;
+						break;
+				case AIRE_FORME_DECROISSANT: ;
+						break;
+				case TYPE_FORME_ALPHABETIQUE: ;
+						break;
+				case TYPE_FORME_ALPHABETIQUE_INVERSE: ;
+						break;
+				case DISTANCE_MAXIMALE_CROISSANTE: ;
+						break;
+				case LARGEUR_CROISSANTE: ;
+						break;
+				case LARGEUR_DECROISSANTE: ;
+						break;
+				case HAUTEUR_CROISSANTE:;
+						break;
+				case HAUTEUR_DECROISSANTE: ;
+						break;
+				case ORDRE_ORIGINALE: ;
+						break;
+		}
+	}
+	
 	private Noeud tete;
 	private Noeud positionCourante;
 	private Noeud fin;

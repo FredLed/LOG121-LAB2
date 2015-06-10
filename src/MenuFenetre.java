@@ -177,39 +177,11 @@ public class MenuFenetre extends JMenuBar{
 		        @Override
 		        public void actionPerformed(ActionEvent evt) {
 		            
-		        	switch (methode.toString()){
-					
-					case "sequenceCroissant": ;
-							break;
-					case "sequenceDecroissant": ;
-							break;
-					case "aireCroissante": ;
-							break;
-					case "aireDecroissante": ;
-							break;
-					case "typeForme1": ;
-							break;
-					case "typeForme2": ;
-							break;
-					case "distanceMax": ;
-							break;
-					case "largeurCroissant": ;
-							break;
-					case "largeurDecroissante": ;
-							break;
-					case "hauteurCroissante":;
-							break;
-					case "hauteurDecroissante": ;
-							break;
-					case "ordreOriginal": ;
-							break;
-					}
-		        	
+		        	comm.getListeForme().trier(TypeTrie.valueOf(methode.toString().toUpperCase()));
 		        }
 			});
 			group.add(item);
 			menu.add(item);
-			
 		}
 		
 		add(menu);
