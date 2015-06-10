@@ -65,29 +65,29 @@ public class MenuFenetre extends JMenuBar{
 			
 			switch (methodeTrie){
 			
-			case "sequenceCroissant": description = "No. Séquence Croissant";
+			case "sequenceCroissant": description = "NUM_SEQ_CROISSANT";
 					break;
-			case "sequenceDecroissant": description = "No. Séquence Décroissant";
+			case "sequenceDecroissant": description = "NUM_SEQ_DECROISSANT";
 					break;
-			case "aireCroissante": description = "Aire Croissante";
+			case "aireCroissante": description = "AIRE_FORME_CROISSANT";
 					break;
-			case "aireDecroissante": description = "Aire Décroissante";
+			case "aireDecroissante": description = "AIRE_FORME_DECROISSANT";
 					break;
-			case "typeForme1": description = "Carré-Rectangle-Cercle-Ovale-Ligne";
+			case "typeForme1": description = "TYPE_FORME_1";
 					break;
-			case "typeForme2": description = "Ligne-Ovale-Cercle-Rectangle-Carré";
+			case "typeForme2": description = "TYPE_FORME_2";
 					break;
-			case "distanceMax": description = "Distance Max";
+			case "distanceMax": description = "DISTANCE_MAXIMALE_CROISSANT";
 					break;
-			case "largeurCroissant": description = "Largeur Croissante";
+			case "largeurCroissant": description = "LARGEUR_CROISSANTE";
 					break;
-			case "largeurDecroissante": description = "Largeur Décroissante";
+			case "largeurDecroissante": description = "LARGEUR_DECROISSANTE";
 					break;
-			case "hauteurCroissante": description = "Hauteur Croissante";
+			case "hauteurCroissante": description = "HAUTEUR_CROISSANTE";
 					break;
-			case "hauteurDecroissante": description = "Hauteur Décroissante";
+			case "hauteurDecroissante": description = "HAUTEUR_DECROISSANTE";
 					break;
-			case "ordreOriginal": description = "Ordre Original";
+			case "ordreOriginal": description = "ORDRE_ORIGINAL";
 					break;
 			}
 			
