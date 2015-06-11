@@ -33,9 +33,9 @@ public class Ovale extends AbstractForme{
 	}
 	
 	/**
-	 * Retourne la largeur de la ligne
+	 * Retourne la largeur de la forme
 	 *
-	 * @return La largeur de la ligne
+	 * @return La largeur de la forme
 	 * 
 	 */
 	public int getLargeur(){
@@ -44,9 +44,9 @@ public class Ovale extends AbstractForme{
 	}
 	
 	/**
-	 * Retourne la hauteur de la ligne
+	 * Retourne la hauteur de la forme
 	 *
-	 * @return La hauteur de la ligne
+	 * @return La hauteur de la forme
 	 * 
 	 */
 	public int getHauteur(){
@@ -55,7 +55,7 @@ public class Ovale extends AbstractForme{
 	}
 	
 	/**
-	 * Retourne l'aire de la ligne
+	 * Retourne l'aire de l'ovale
 	 *
 	 * @return L'aire
 	 * 

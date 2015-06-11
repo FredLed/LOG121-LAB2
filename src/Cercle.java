@@ -26,9 +26,9 @@ public class Cercle extends Ovale{
 	}
 	
 	/**
-	 * Retourne la hauteur de la ligne
+	 * Retourne la hauteur de la forme
 	 *
-	 * @return La hauteur de la ligne
+	 * @return La hauteur de la forme
 	 * 
 	 */
 	public int getHauteur(){
@@ -37,7 +37,7 @@ public class Cercle extends Ovale{
 	}
 	
 	/**
-	 * Retourne l'aire de la ligne
+	 * Retourne l'aire de la forme
 	 *
 	 * @return L'aire
 	 * 
