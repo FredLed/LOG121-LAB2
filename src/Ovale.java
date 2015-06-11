@@ -40,7 +40,7 @@ public class Ovale extends AbstractForme{
 	 */
 	public int getLargeur(){
 		
-		return this.rayonH;
+		return (2 * this.rayonH);
 	}
 	
 	/**
@@ -51,7 +51,7 @@ public class Ovale extends AbstractForme{
 	 */
 	public int getHauteur(){
 		
-		return this.rayonV;
+		return (2 * this.rayonV);
 	}
 	
 	/**
@@ -65,6 +65,7 @@ public class Ovale extends AbstractForme{
 		return (Math.PI * rayonH * rayonV);
 	}
 	
+	
 	/* (non-Javadoc)
 	 * @see AbstractForme#draw(java.awt.Graphics)
 	 */
@@ -75,10 +76,10 @@ public class Ovale extends AbstractForme{
 		
 		g.setColor(getCouleur());
 		
-		g.fillOval((position * 40),(position * 40), rayonH, rayonV);
+		g.fillOval((position * 40),(position * 40), 2 * rayonH, 2 * rayonV);
 		
 		g2.setStroke(dashed);
-		g2.drawRect((position * 40), (position * 40), rayonH, rayonV);
+		g2.drawRect((position * 40), (position * 40), 2 * rayonH, 2 * rayonV);
 		
 		g2.dispose();
 	}

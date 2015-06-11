@@ -99,9 +99,9 @@ public class Ligne extends AbstractForme{
 	 */
 	public double getAire(){
 		
-		return Math.abs(this.getSommet2().y - this.getSommet1().y);
+		return Math.sqrt((Math.pow(Math.abs(this.getSommet2().x - this.getSommet1().x),2.0))
+				+ (Math.pow(Math.abs(this.getSommet2().y - this.getSommet1().y), 2.0)));
 	}
-	
 	
 	
 	/**

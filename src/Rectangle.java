@@ -103,6 +103,7 @@ public class Rectangle extends AbstractForme{
 		return Math.abs(this.getSommet2().y - this.getSommet1().y);
 	}
 	
+	
 	/* (non-Javadoc)
 	 * @see AbstractForme#draw(java.awt.Graphics)
 	 */

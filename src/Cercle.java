@@ -33,7 +33,7 @@ public class Cercle extends Ovale{
 	 */
 	public int getHauteur(){
 		
-		return this.rayonH;
+		return (2 * this.rayonH);
 	}
 	
 	/**
@@ -57,10 +57,10 @@ public class Cercle extends Ovale{
 		
 		g.setColor(getCouleur());
 		
-		g.fillOval((position * 40),(position * 40), rayonH, rayonH);
+		g.fillOval((position * 40),(position * 40), 2 * rayonH, 2 * rayonH);
 		
 		g2.setStroke(dashed);
-		g2.drawRect((position * 40), (position * 40), rayonH, rayonH);
+		g2.drawRect((position * 40), (position * 40), 2 * rayonH, 2 * rayonH);
 		
 		g2.dispose();
 	}
