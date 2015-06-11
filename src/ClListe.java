@@ -238,7 +238,7 @@ public class ClListe<T> extends Observable{
 	 * @param methode la méthode de trie à utiliser pour comparer les valeurs
 	 * @return 
 	 */
-	public void triBulle(String methode){
+	public void trier(String methode){
 		
 		//Pour faire l'échange de valeur
 		Noeud noeudTemporaire = new Noeud(null,null,null); 

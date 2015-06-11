@@ -130,7 +130,7 @@ public class MenuFenetre extends JMenuBar{
 		        @Override
 		        public void actionPerformed(ActionEvent evt) {
 		            
-		        	comm.getListeForme().triBulle(methode.toString());
+		        	comm.getListeForme().trier(methode.toString());
 		        }
 			});
 			group.add(item);
