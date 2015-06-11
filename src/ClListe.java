@@ -23,6 +23,7 @@ public class ClListe<T> extends Observable{
 		fin = null;
 		positionCourante = null;
 		this.maxNbElements = max;
+		this.estCroissante = true;
 	}
 	
 	public boolean estVide() {
@@ -160,6 +161,16 @@ public class ClListe<T> extends Observable{
 		return positionCourante.valeur;
 	}
 	
+	public Noeud getTete(){
+		
+		return this.tete;
+	}
+	
+	public Noeud getFin(){
+		
+		return this.fin;
+	}
+	
 	public void avancer() throws Exception {
 		if (estVide()) 
 			throw new Exception("Impossible d'avancer car la liste est vide.");
@@ -177,7 +188,7 @@ public class ClListe<T> extends Observable{
 		else if (positionCourante == tete)
 			throw new Exception("Impossible de reculer plus loin que le début.");
 		else if (positionCourante != null)
-			positionCourante = positionCourante.suivant;
+			positionCourante = positionCourante.precedent;
 		else
 			throw new Exception("La position courante est nulle.");
 	}
@@ -204,6 +215,11 @@ public class ClListe<T> extends Observable{
 		return this.maxNbElements == this.getNbElements();
 	}
 	
+	public boolean estCroissante(){
+		
+		return this.estCroissante;
+	}
+	
 	public void reinitialiser() {
 		nbElements = 0;
 		tete = null;
@@ -211,93 +227,82 @@ public class ClListe<T> extends Observable{
 		positionCourante = null;
 	}
 	
-	public Noeud trier(Noeud p, int n, boolean croissant, TypeTrie methode) {
-		int Q = n/2;
-		int P = n - Q;
-		Noeud q;
+	public void triBulle(String methode){
 		
-		if (P >= 2) {
-			q = trier(p, P, croissant, methode);
-			if (Q >= 2) p = trier(q, Q, croissant, methode);
-		}
-		else
-		{
-			q = p.suivant;
+		int i = 0;
+		String methodeTri = methode;
+		Noeud noeudTemporaire = new Noeud(null,null,null);
+		
+		boolean changementFait = true;
+		
+		while(changementFait){
+			changementFait = false;
+			Noeud noeudCourant = this.getTete();
+			for(i=0; i < 9;i++){
+				if(this.compareData((AbstractForme)noeudCourant.valeur,
+						(AbstractForme)noeudCourant.suivant.valeur, methodeTri)){
+					noeudTemporaire.valeur = noeudCourant.valeur;
+					noeudCourant.valeur = noeudCourant.suivant.valeur;
+					noeudCourant.suivant.valeur = noeudTemporaire.valeur;
+					
+					changementFait = true;
+				}
+				noeudCourant = noeudCourant.suivant;
+			}
 		}
 		
-		q = fusionner(p, P, q, Q, croissant, methode);
-		return q;
+		setChanged();
+		notifyObservers();
 	}
 	
-	private Noeud fusionner(Noeud p, int P, Noeud q, int Q, boolean croissant, TypeTrie methode) {
-		for (;;) {
-			AbstractForme f1 = (AbstractForme)p.suivant.valeur;
-			AbstractForme f2 = (AbstractForme)q.suivant.valeur;
-			boolean testValeur = false;
-			
-			switch (methode) {
-				case NUM_SEQ_CROISSANT : 
-					testValeur = (f1.getNumeroSequence() > f2.getNumeroSequence()) ? true : false;
-					break;
-				case NUM_SEQ_DECROISSANT: ;
-						break;
-				case AIRE_FORME_CROISSANT: 
-					testValeur = (f1.getAire() > f2.getAire()) ? true : false;
-						break;
-				case AIRE_FORME_DECROISSANT: ;
-						break;
-				case TYPE_FORME_1: ;
-						break;
-				case TYPE_FORME_2: ;
-						break;
-				case DISTANCE_MAXIMALE_CROISSANTE:
-						break;
-				case LARGEUR_CROISSANTE:
-					testValeur = (f1.getLargeur() > f2.getLargeur()) ? true : false;
-						break;
-				case LARGEUR_DECROISSANTE: ;
-						break;
-				case HAUTEUR_CROISSANTE:;
-					testValeur = (f1.getHauteur() > f2.getHauteur()) ? true : false;
-						break;
-				case HAUTEUR_DECROISSANTE: ;
-						break;
-				case ORDRE_ORIGINAL: ;
-						break;
-			}
-			
-			/***/
-			if (testValeur) {
-				Noeud t = q.suivant;
-				
-				q.suivant = t.suivant;
-				q.suivant.precedent = q;
-				
-				t.precedent = p;
-				t.suivant = p.suivant;
-				p.suivant.precedent = t;
-				p.suivant = t;
-				
-				if (Q == 1) break;
-				
-				--Q;
-			}
-			else {
-				if (P == 1) {
-					while (Q >= 1) {
-						q = q.suivant;
-						--Q;
-					}
-					break;
-				}
-				--P;
-			}
-			
-			p = p.suivant;
-		}
-		/***/
+	public  boolean compareData(AbstractForme forme1, AbstractForme forme2,String methode){
 		
-		return q;
+		boolean isBigger = false;
+		
+		switch (methode) {
+		case "NUM_SEQ_CROISSANT":
+			this.estCroissante = true;
+			isBigger = (forme1.getNumeroSequence() > forme2.getNumeroSequence()) ? true : false;
+				break;
+		case "NUM_SEQ_DECROISSANT":
+			this.estCroissante = false;
+			isBigger = (forme1.getNumeroSequence() > forme2.getNumeroSequence()) ? true : false;
+				break;
+		case "AIRE_FORME_CROISSANT":
+			this.estCroissante = true;
+			isBigger = (forme1.getAire() > forme2.getAire()) ? true : false;
+				break;
+		case "AIRE_FORME_DECROISSANT":
+			this.estCroissante = false;
+			isBigger = (forme1.getAire() > forme2.getAire()) ? true : false;
+				break;
+		case "TYPE_FORME_1": ;
+				break;
+		case "TYPE_FORME_2": ;
+				break;
+		case "DISTANCE_MAXIMALE_CROISSANTE":
+				break;
+		case "LARGEUR_CROISSANTE":
+			this.estCroissante = true;
+			isBigger = (forme1.getLargeur() > forme2.getLargeur()) ? true : false;
+				break;
+		case "LARGEUR_DECROISSANTE":
+			this.estCroissante = false;
+			isBigger = (forme1.getLargeur() > forme2.getLargeur()) ? true : false;
+				break;
+		case "HAUTEUR_CROISSANTE":
+			this.estCroissante = true;
+			isBigger = (forme1.getHauteur() > forme2.getHauteur()) ? true : false;
+				break;
+		case "HAUTEUR_DECROISSANTE":
+			this.estCroissante = false;
+			isBigger = (forme1.getHauteur() > forme2.getHauteur()) ? true : false;
+				break;
+		case "ORDRE_ORIGINAL": ;
+				break;
+		}
+		
+		return isBigger;
 	}
 	
 	private Noeud tete;
@@ -305,5 +310,6 @@ public class ClListe<T> extends Observable{
 	private Noeud fin;
 	private int nbElements;
 	private int maxNbElements;
+	private boolean estCroissante;
 	
 }

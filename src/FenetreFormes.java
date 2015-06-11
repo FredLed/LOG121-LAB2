@@ -72,8 +72,11 @@ public class FenetreFormes extends JComponent implements Observer{
 		if (listeForme.getNbElements() == 10){
 			
 			try{
-				
-				listeForme.setPositionCouranteDebut();
+				if(listeForme.estCroissante())
+					listeForme.setPositionCouranteDebut();
+				else{
+					listeForme.setPositionCouranteFin();
+				}
 			}
 			catch(Exception e){
 				
@@ -83,7 +86,14 @@ public class FenetreFormes extends JComponent implements Observer{
 			for(int i = 0; i < 10; i++){
 			
 				try{
-					if(i != 0){listeForme.avancer();}
+					if(i != 0){
+						if(listeForme.estCroissante()){
+							listeForme.avancer();
+						}
+						else{
+							listeForme.reculer();
+						}
+					}
 					((AbstractForme)(listeForme.getElement())).draw(g,i);
 				}
 				catch(Exception e){
