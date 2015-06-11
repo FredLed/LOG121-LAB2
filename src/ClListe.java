@@ -227,26 +227,43 @@ public class ClListe<T> extends Observable{
 		positionCourante = null;
 	}
 	
+	/**
+	 * Permet de trier la liste selon un algoryhtme de tri bulle.
+	 * Parcours de la liste, si l'élément suivant est plus petit que
+	 * l'élément courant, les valeurs sont échangées à l'aide d'un
+	 * noeud intermédiaire(noeudTemporaire). Tant qu'il y a des inversions de
+	 * valeur la liste n'est pas complétement triés. La comparaison de valeur
+	 * se fait selon la méthode de tri passée en paramètre
+	 * 
+	 * @param methode la méthode de trie à utiliser pour comparer les valeurs
+	 * @return 
+	 */
 	public void triBulle(String methode){
 		
-		int i = 0;
-		String methodeTri = methode;
-		Noeud noeudTemporaire = new Noeud(null,null,null);
-		
+		//Pour faire l'échange de valeur
+		Noeud noeudTemporaire = new Noeud(null,null,null); 
+		//True s'il y a eu une modification dans la liste
 		boolean changementFait = true;
 		
+		//Tant que la liste n'est pas en ordre
 		while(changementFait){
+			//Réinitialisation du flag
 			changementFait = false;
+			//Parcours à partir de la tête de la liste
 			Noeud noeudCourant = this.getTete();
-			for(i=0; i < 9;i++){
+			//Tant qu'on est pas au dernier noeud de la liste
+			while(noeudCourant.suivant != null){
+				//Compare la valeur selon la méthode de tri choisie
 				if(this.compareData((AbstractForme)noeudCourant.valeur,
-						(AbstractForme)noeudCourant.suivant.valeur, methodeTri)){
+						(AbstractForme)noeudCourant.suivant.valeur, methode)){
+					//Si la valeur suivante est plus grande, on echange les valeurs
 					noeudTemporaire.valeur = noeudCourant.valeur;
 					noeudCourant.valeur = noeudCourant.suivant.valeur;
 					noeudCourant.suivant.valeur = noeudTemporaire.valeur;
-					
+					//Un changement a été fait
 					changementFait = true;
 				}
+				//Passe au noeud suivant
 				noeudCourant = noeudCourant.suivant;
 			}
 		}
@@ -255,10 +272,21 @@ public class ClListe<T> extends Observable{
 		notifyObservers();
 	}
 	
+	/**
+	 * Méthode qui permet de comparer la valeur de 2 noeuds selon une méthode
+	 * de tri passé en paramètre. Exemple: vérifier que la forme stocker dans le
+	 * noeud 1 est plus large que la forme stockée dans le noeud 2.
+	 * 
+	 * @param forme1 une forme à comparer
+	 * @param forme2 une forme à comparer
+	 * @param methode la méthode de trie à utiliser pour comparer les valeurs
+	 * @return isBigger true si la condition de comparaison est vrai, sinon retourne false
+	 */
 	public  boolean compareData(AbstractForme forme1, AbstractForme forme2,String methode){
 		
 		boolean isBigger = false;
 		
+		//Comparaison de valeur selon la méthode de tri passé en paramètre
 		switch (methode) {
 		case "NUM_SEQ_CROISSANT":
 			this.estCroissante = true;

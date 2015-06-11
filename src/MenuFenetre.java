@@ -49,53 +49,6 @@ public class MenuFenetre extends JMenuBar{
 	/** The Constant MENU_FICHIER_QUITTER_TOUCHE_RACC. */
 	private static final char MENU_FICHIER_OBTENIRFORME_TOUCHE_RACC = KeyEvent.VK_Q;
 	
-	private static enum MethodesDeTrie{
-		
-		sequenceCroissant,sequenceDecroissant,
-		aireCroissante,aireDecroissante,
-		typeForme1,typeForme2,distanceMax,
-		largeurCroissant,largeurDecroissante,
-		hauteurCroissante,hauteurDecroissante,
-		ordreOriginal;
-		
-		public String getDescription(){
-			
-			String methodeTrie = name();
-			String description = null;
-			
-			switch (methodeTrie){
-			
-			case "sequenceCroissant": description = "NUM_SEQ_CROISSANT";
-					break;
-			case "sequenceDecroissant": description = "NUM_SEQ_DECROISSANT";
-					break;
-			case "aireCroissante": description = "AIRE_FORME_CROISSANT";
-					break;
-			case "aireDecroissante": description = "AIRE_FORME_DECROISSANT";
-					break;
-			case "typeForme1": description = "TYPE_FORME_1";
-					break;
-			case "typeForme2": description = "TYPE_FORME_2";
-					break;
-			case "distanceMax": description = "DISTANCE_MAXIMALE_CROISSANT";
-					break;
-			case "largeurCroissant": description = "LARGEUR_CROISSANTE";
-					break;
-			case "largeurDecroissante": description = "LARGEUR_DECROISSANTE";
-					break;
-			case "hauteurCroissante": description = "HAUTEUR_CROISSANTE";
-					break;
-			case "hauteurDecroissante": description = "HAUTEUR_DECROISSANTE";
-					break;
-			case "ordreOriginal": description = "ORDRE_ORIGINAL";
-					break;
-			}
-			
-			return description;
-		}
-	}
-	
-	
 	/** The Constant MENU_AIDE_PROPOS. */
 	private static final String
 			MENU_FICHIER_TITRE = "app.frame.menus.file.title",
@@ -170,14 +123,14 @@ public class MenuFenetre extends JMenuBar{
 		JMenu menu = creerMenu(MENU_ORDRE_TITRE, new String[] {});
 		ButtonGroup group = new ButtonGroup();
 		
-		for(final MethodesDeTrie methode : MethodesDeTrie.values()){
+		for(final TypeTrie methode : TypeTrie.values()){
 			
-			JRadioButtonMenuItem item = new JRadioButtonMenuItem(methode.getDescription());
+			JRadioButtonMenuItem item = new JRadioButtonMenuItem(methode.toString());
 			item.addActionListener(new ActionListener(){
 		        @Override
 		        public void actionPerformed(ActionEvent evt) {
 		            
-		        	comm.getListeForme().triBulle(methode.getDescription());
+		        	comm.getListeForme().triBulle(methode.toString());
 		        }
 			});
 			group.add(item);
