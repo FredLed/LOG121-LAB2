@@ -22,30 +22,9 @@ public class Cercle extends Ovale{
 	public Cercle(int nseq,Color couleur,Point centre, int[] rayon){
 		
 		super(nseq, couleur,centre,rayon);
-		
+		this.rayonV = this.rayonH;
 	}
 	
-	/**
-	 * Retourne la hauteur de la forme
-	 *
-	 * @return La hauteur de la forme
-	 * 
-	 */
-	public int getHauteur(){
-		
-		return (2 * this.rayonH);
-	}
-	
-	/**
-	 * Retourne l'aire de la forme
-	 *
-	 * @return L'aire
-	 * 
-	 */
-	public double getAire(){
-		
-		return (Math.PI * rayonH * rayonH);
-	}
 	
 	/* (non-Javadoc)
 	 * @see AbstractForme#draw(java.awt.Graphics)
