@@ -78,4 +78,8 @@ public class Ovale extends AbstractForme{
 		this.drawContour(g, position);
 
 	}
+	
+	public double getDistanceMax() {
+		return (this.getHauteur() > this.getLargeur()) ? this.getHauteur(): this.getLargeur();
+	}
 }

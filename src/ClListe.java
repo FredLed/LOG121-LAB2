@@ -30,6 +30,10 @@ public class ClListe<T> extends Observable{
 		return nbElements == 0;
 	}
 	
+	public void faireCopieSauvegarde() {
+		
+	}
+	
 	public boolean InsererAvant(T valeur) {
 		if (nbElements < maxNbElements) {
 			// Dans tous les cas, on met tout le temps la position courante à la 
@@ -285,6 +289,8 @@ public class ClListe<T> extends Observable{
 	public  boolean compareData(AbstractForme forme1, AbstractForme forme2,String methode){
 		
 		boolean isBigger = false;
+		String tForme1;
+		String tForme2;
 		
 		//Comparaison de valeur selon la méthode de tri passé en paramètre
 		switch (methode) {
@@ -304,11 +310,23 @@ public class ClListe<T> extends Observable{
 			this.estCroissante = false;
 			isBigger = (forme1.getAire() > forme2.getAire()) ? true : false;
 				break;
-		case "TYPE_FORME_1": ;
+		case "TYPE_FORME_1":
+			this.estCroissante = true;
+			tForme1 = forme1.getClass().toString().substring(6, forme1.getClass().toString().length()).toUpperCase();
+			tForme2 = forme2.getClass().toString().substring(6, forme2.getClass().toString().length()).toUpperCase();
+			isBigger = (TypeForme.valueOf(tForme1).getNoForme()
+						> TypeForme.valueOf(tForme2).getNoForme());
 				break;
-		case "TYPE_FORME_2": ;
+		case "TYPE_FORME_2":
+			this.estCroissante = false;
+			tForme1 = forme1.getClass().toString().substring(6, forme1.getClass().toString().length()).toUpperCase();
+			tForme2 = forme2.getClass().toString().substring(6, forme2.getClass().toString().length()).toUpperCase();
+			isBigger = (TypeForme.valueOf(tForme1).getNoForme()
+						> TypeForme.valueOf(tForme2).getNoForme());
 				break;
-		case "DISTANCE_MAXIMALE_CROISSANTE":
+		case "DISTANCE_MAXIMALE_CROISSANT":
+			this.estCroissante = true;
+			isBigger = forme1.getDistanceMax() > forme2.getDistanceMax();
 				break;
 		case "LARGEUR_CROISSANTE":
 			this.estCroissante = true;

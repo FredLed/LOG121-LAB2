@@ -119,4 +119,8 @@ public class Ligne extends AbstractForme{
 		this.drawContour(g, position);
 
 	}
+	
+	public double getDistanceMax() {
+		return Math.sqrt((this.getHauteur() * this.getHauteur()) + (this.getLargeur() * this.getLargeur()));
+	}
 }

@@ -125,5 +125,5 @@ public abstract class AbstractForme {
 	 * @return La distance maximale entre 2 points de la forme
 	 */
 	
-	//abstract int getDistanceMax();
+	abstract double getDistanceMax();
 }
