@@ -112,16 +112,11 @@ public class Ligne extends AbstractForme{
 	 */
 	public void draw(Graphics g, int position){
 		
-		final Graphics2D g2 = (Graphics2D) g.create();
-		g2.setColor(Color.BLACK);
-		
 		g.setColor(getCouleur());
 		
 		g.drawLine((position * 40), (position * 40),((position * 40) + Math.abs(sommet2.x - sommet1.x)), ((position * 40) + Math.abs(sommet2.y - sommet1.y)));
 		
-		g2.setStroke(dashed);
-		g2.drawRect((position * 40), (position * 40),Math.abs(sommet2.x - sommet1.x), Math.abs(sommet2.y - sommet1.y));
-		
-		g2.dispose();
+		this.drawContour(g, position);
+
 	}
 }

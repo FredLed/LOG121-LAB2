@@ -71,16 +71,11 @@ public class Ovale extends AbstractForme{
 	 */
 	public void draw(Graphics g, int position){
 		
-		final Graphics2D g2 = (Graphics2D) g.create();
-		g2.setColor(Color.BLACK);
-		
 		g.setColor(getCouleur());
 		
 		g.fillOval((position * 40),(position * 40), 2 * rayonH, 2 * rayonV);
 		
-		g2.setStroke(dashed);
-		g2.drawRect((position * 40), (position * 40), 2 * rayonH, 2 * rayonV);
-		
-		g2.dispose();
+		this.drawContour(g, position);
+
 	}
 }
