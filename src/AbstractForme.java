@@ -16,10 +16,10 @@ public abstract class AbstractForme {
 	/** La couleur de la forme */
 	protected Color couleur;
 	
-	protected final static float dash1[] = { 2.0f };
+	protected final static float pointille[] = { 2.0f };
 	 
-	protected final static BasicStroke dashed = new BasicStroke(1.0f,
-		      BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, dash1, 0.0f);
+	protected final static BasicStroke lignePointillee = new BasicStroke(1.0f,
+		      BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, pointille, 0.0f);
 	/**
 	 * Instantiates a new abstract forme.
 	 *
@@ -73,11 +73,18 @@ public abstract class AbstractForme {
 		this.couleur = couleur;
 	}
 	
+	
+	/**
+	 * Dessine le contour de la forme en pointillée.
+	 *
+	 * @param g Objet graphique
+	 * @param position La position de la forme dans la liste
+	 */
 	protected void drawContour(Graphics g, int position){
 		
 		final Graphics2D g2 = (Graphics2D) g.create();
 		g2.setColor(Color.BLACK);
-		g2.setStroke(dashed);
+		g2.setStroke(lignePointillee);
 		g2.drawRect((position * 40), (position * 40), getLargeur(), getHauteur());
 		
 		g2.dispose();

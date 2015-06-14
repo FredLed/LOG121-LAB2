@@ -69,7 +69,7 @@ public class FenetreFormes extends JComponent implements Observer{
 	@Override 
 	public void paintComponent(Graphics g){
 		
-		if (listeForme.getNbElements() == 10){
+		if (listeForme.estPleine()){
 			
 			try{
 				if(listeForme.estCroissante())
