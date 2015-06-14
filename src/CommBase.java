@@ -154,7 +154,7 @@ public class CommBase {
 			protected Object doInBackground() throws Exception {
 				System.out.println("Réception des formes");
 				String chaineForme;
-				AbstractForme formeRecue;
+				Object formeRecue;
 				listeForme.reinitialiser();
 				
 				while (!listeForme.estPleine()) {
